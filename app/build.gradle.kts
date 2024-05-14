@@ -1,3 +1,9 @@
+import java.util.Properties
+
+val properties = Properties()
+properties.load(project.rootProject.file("local.properties").inputStream())
+//properties.load(rootProject.file("local.properties").inputStream())
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -22,6 +28,9 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        //
+        buildConfigField("String", "KAKAO_API_KEY", properties.getProperty("KAKAO_API_KEY"))
     }
 
     buildTypes {
@@ -77,9 +86,23 @@ dependencies {
     // hilt
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // constraintlayout.compose
+    implementation(libs.androidx.constraintlayout.compose)
+
+    // coil-compose
+    implementation(libs.coil.compose)
+
+    // retrofit2, okhttp3, gson
+    implementation(libs.google.gson)
+    implementation(libs.squareup.retrofit2)
+    implementation(libs.squareup.retrofit2.converter.gson)
+    implementation(libs.squareup.okhttp3)
+    implementation(libs.squareup.okhttp3.logging.interceptor)
 }
 
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
-}
+//// Allow references to generated code
+//kapt {
+//    correctErrorTypes = true
+//}
