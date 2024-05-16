@@ -95,7 +95,7 @@ fun ImageSearchScreen(
             }
 
             Button(onClick = buttonClickListener) {
-                Text("검색")
+                Text("검색 Search")
             }
         }
         RvImageSearch(

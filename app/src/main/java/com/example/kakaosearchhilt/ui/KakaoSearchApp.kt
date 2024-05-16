@@ -68,7 +68,7 @@ fun BottomBar(navController: NavHostController) {
                 .weight(1f),
             onClick = { navController.navigate(route = Screen.MyBox.route) }) {
             Text(
-                "마이박스",
+                "마이박스 My Box",
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
