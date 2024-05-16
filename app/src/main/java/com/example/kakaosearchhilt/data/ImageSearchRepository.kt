@@ -52,7 +52,8 @@ class NetworkImageSearchRepository(
             ItemModel(
                 thumbnailURL = doc.thumbnailURL,
                 displaySitename = doc.displaySitename,
-                datetime = formatter.format(doc.datetime)
+                datetime = doc.datetime
+//                datetime = formatter.format(doc.datetime)
             )
         }
     }

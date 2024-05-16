@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
 
     //
+    //id("com.google.devtools.ksp")
     id("kotlin-kapt")
     alias(libs.plugins.googleDaggerHiltAndroid)
 }
@@ -94,12 +95,17 @@ dependencies {
     // coil-compose
     implementation(libs.coil.compose)
 
-    // retrofit2, okhttp3, gson
-    implementation(libs.google.gson)
+    // retrofit2, okhttp3
     implementation(libs.squareup.retrofit2)
-    implementation(libs.squareup.retrofit2.converter.gson)
     implementation(libs.squareup.okhttp3)
     implementation(libs.squareup.okhttp3.logging.interceptor)
+
+    // moshi
+//    implementation(libs.squareup.moshi)
+    implementation(libs.squareup.moshi.kotlin)
+    kapt(libs.squareup.moshi.kotlin.codegen)
+    implementation(libs.squareup.retrofit2.converter.moshi)
+//    implementation(libs.jetbrains.kotlin.reflect)
 }
 
 //// Allow references to generated code

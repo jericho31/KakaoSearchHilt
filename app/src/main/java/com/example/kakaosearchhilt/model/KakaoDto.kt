@@ -1,7 +1,6 @@
 package com.example.kakaosearchhilt.model
 
-import com.google.gson.annotations.SerializedName
-import java.util.Date
+import com.squareup.moshi.Json
 
 data class KakaoDto(
     val documents: List<Document>,
@@ -10,47 +9,48 @@ data class KakaoDto(
 
 data class Document(
     val collection: Collection,
-    /** gson으로 포맷 따로 지정 안해도, ISO 포맷으로 날아오므로 알아서 Date로 넣어준다. */
-    val datetime: Date,
 
-    @SerializedName("display_sitename")
+    /** gson은 Date 알아서 먹어주는데 모시는 왜 못먹냐... */
+    val datetime: String,
+
+    @Json(name = "display_sitename")
     val displaySitename: String,
 
-    @SerializedName("doc_url")
+    @Json(name = "doc_url")
     val docURL: String,
 
     val height: Long,
 
-    @SerializedName("image_url")
+    @Json(name = "image_url")
     val imageURL: String,
 
-    @SerializedName("thumbnail_url")
+    @Json(name = "thumbnail_url")
     val thumbnailURL: String,
 
     val width: Long
 )
 
 enum class Collection(val value: String) {
-    @SerializedName("blog")
+    @Json(name = "blog")
     Blog("blog"),
 
-    @SerializedName("cafe")
+    @Json(name = "cafe")
     Cafe("cafe"),
 
-    @SerializedName("etc")
+    @Json(name = "etc")
     Etc("etc"),
 
-    @SerializedName("news")
+    @Json(name = "news")
     News("news");
 }
 
 data class Meta(
-    @SerializedName("is_end")
+    @Json(name = "is_end")
     val isEnd: Boolean,
 
-    @SerializedName("pageable_count")
+    @Json(name = "pageable_count")
     val pageableCount: Long,
 
-    @SerializedName("total_count")
+    @Json(name = "total_count")
     val totalCount: Long
 )
